@@ -2,24 +2,37 @@
 <html lang="ua">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width); initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Автоматична транскрипція</title>
 </head>
 <body>
     <form>
         <br>
         <br>
-        <textarea rows="10" cols="80" type = "text" id="user_input" placeholder="Введіть текст">      
-        </textarea>
-        <textarea rows="10" cols="80" id="output">
-        </textarea>
+        <textarea rows="10" cols="80" type = "text" id="user_input" placeholder="Введіть текст" required>      
+        </textarea>   
         <br>
         <br>
-        <button onclick = "return checkform()" type="button">Фонематична</button>
+        <button onclick = "return checkform(0)" type="button">Фонематична</button>
         <button onclick = "return checkform(1)" type="button">Фонетична</button>
-        
-        
+        <button onclick = "return checkform(2)" type="button">IPA</button>
+        <button onclick = "return checkform(3)" type="button">P2G</button>
+        <br>
+        <input type="checkbox" id="voiced">
+        <span>Асиміляція за глухістю (ненормативна)</span>
+        <br>
+        <input type="checkbox" id="stress">
+        <span>Наголос</span>
+        <input type="checkbox" id="word">
+        <span>Фонетичне слово</span>
+        <br>
+        <a href="about.html">Допомога</a>
     </form>
+    <br>
+    <div contenteditable="true"> 
+        <span id="output">
+        </span>
+    </div>
     <script src="js/index.js">
     </script>
     
