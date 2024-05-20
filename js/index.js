@@ -151,13 +151,58 @@ function p2g_dict(string){
     return string; }
 
 function phonetic_word(string){
-    string = string.replace(/(?<=(^|\s)[бвгґжкпфхчшдзлрстцмн]{1}) /g, "")
+    string = string.replace("", "")
     return string;    
 }
 
 function replace_ipa(string){
+    string = string.replace(/в°/g, "w");
+    string = string.replace(/[̃°·]/g, "");
+    string = string.replace(/:/g, "ː");
+    string = string.replace(/д͡з/g, "d͡z");
+    string = string.replace(/д͡ж/g, "d͡ʒ");
+    string = string.replace(/ч/g, "t͡ʃ");
+    string = string.replace(/ц/g, "t͡s");
+    string = string.replace(/л/g, "l");
+    string = string.replace(/р/g, "r");
+    string = string.replace(/б/g, "b");
+    string = string.replace(/в/g, "ʋ");
+    string = string.replace(/г/g, "ɦ");
+    string = string.replace(/ґ/g, "ɡ");
+    string = string.replace(/д/g, "d");
+    string = string.replace(/ж/g, "ʒ");
+    string = string.replace(/з/g, "z");
+    string = string.replace(/к/g, "k");
+    string = string.replace(/м/g, "m");
+    string = string.replace(/н/g, "n");
+    string = string.replace(/п/g, "p");
+    string = string.replace(/с/g, "s");
+    string = string.replace(/т/g, "t");
+    string = string.replace(/ф/g, "f");
+    string = string.replace(/х/g, "x");
+    string = string.replace(/ш/g, "ʃ");
+    string = string.replace(/j/g, "j");
+    string = string.replace(/ĭ/g, "i̯");
+    string = string.replace(/ў/g, "u̯");
+    string = string.replace(/а/g, "ɑ");
+    string = string.replace(/е/g, "ɛ");
+    string = string.replace(/и/g, "ɪ");
+    string = string.replace(/і/g, "i");
+    string = string.replace(/о/g, "ɔ");
+    string = string.replace(/у/g, "u");
+    string = string.replace(/['´]/g, "ʲ");
     return string;    
 }
+
+function replace_stressed_ipa(string){
+    string = string.replace(/ɛ\(ɪ\)/g, "e");
+    string = string.replace(/ɪ\(ɛ\)/g, "e");
+    string = string.replace(/ɛ\(i\)/g, "e");
+    string = string.replace(/ɔ\(u\)/g, "o");
+    string = string.replace(/ɑ(?!́)/g, "ɐ");
+    string = string.replace(/u(?!́|̯)/g, "ʊ");
+    string = string.replace(/́/g, "");
+    return string;}
 
 function replace_voiced(string){
     string = string.replace(/б(?=[птсшкхцч])/g, "п");
@@ -186,6 +231,8 @@ function checkform(type){
     let stress = document.getElementById("stress")
     let word = document.getElementById("word")
     let voiced = document.getElementById("voiced")
+    let syntagma = document.getElementById("syntagma")
+
     string = string.toLowerCase()
     if (word.checked==true && stress.checked==true){
         string = phonetic_word(string)
@@ -203,9 +250,20 @@ function checkform(type){
     if (type==2){
         string2 = replace_phonemic(string);
         string2 = replace_phonetic(string2);
+        if (stress.checked==true){
+            string2 = replace_stressed(string2);  
+        }
+        string2 = replace_ipa(string2);
+        if (stress.checked==true){
+            string2 = replace_stressed_ipa(string2);  
+        }
     }
     if (type==3){
         string2 = p2g(string);
+    }
+    if (syntagma.checked==true){
+        list1 = string2.split(/[,.?!;–]/g)
+        string2 = list1.join(" // ")
     }
     document.getElementById("output").innerHTML = string2;    
     return false;
