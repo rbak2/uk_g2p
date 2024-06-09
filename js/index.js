@@ -23,9 +23,11 @@ function replace_phonemic(string){
     string = string.replace(/тс(?=´к|тв)/g, "ц");
     string = string.replace(/(?<=с)т(?=н)/g, "");
     string = string.replace(/(?<=з)д(?=ц)/g, "");
-    string = string.replace(/((?<=на|ві|пі)|(?<=[сп]ере))q/g, "qз");
-    string = string.replace(/((?<=\sна|\sві)|(?<=пі|^на|^ві)|(?<=\sпере)|(?<=^пере))s/g, "sж");
-    string = string.replace(/((?<=\sі|^не|^по)|(?<=\sне|\sпо)|(?<=\s|^і)|(?<=^))з(?=[сцчш])/g, "с");
+
+    string = string.replace(/(?<=(на|[вп]і|[сп]ере)́?)q/g, "qз");
+    string = string.replace(/((?<=(\s|^)(на|ві|пере)́?)|(?<=пі́?))s/g, "sж");
+    string = string.replace(/(?<=(\s|^)(і|не|по|)́?)з(?=[сцчш])/g, "с");
+    
     string = string.replace(/п(?=[бдзжгґqs])/g, "б");
     string = string.replace(/т(?=´?[бдзжгґqs])/g, "д");
     string = string.replace(/с(?=´?[бдзжгґqs])/g, "з");
@@ -42,7 +44,9 @@ function replace_phonemic(string){
     string = string.replace(/с´?(?=[чжшs])/g, "ш");
     string = string.replace(/ж(?=[зсцq])/g, "з");
     string = string.replace(/ш(?=[зсцq])/g, "с");
-    string = string.replace(/((?<=н´і)|(?<=во|ле|де|кі)|(?<=д´[оі]))г(?=[кт])/g, "х");
+
+    string = string.replace(/(?<=(во|[лд]е|кі|[дн]´[оі])́?)г(?=[кт])/g, "х");
+
     string = string.replace(/(?<=[дтнзсцлq])(?=[дтнзсцлq]´)/g, "´");
     string = string.replace(/q/g, "д͡з");
     string = string.replace(/s/g, "д͡ж");
@@ -125,13 +129,13 @@ function p2g(string){
     string = string.replace(/зся(?=\s|$)/g, "жся");
     string = string.replace(/сч/g, "щ");
     string = string.replace(/(?<=\s|^)міз(?=[зсц])/g, "між");
-    string = string.replace(/(?<!д)жши/g, "зши");
+    string = string.replace(/(?<!мі)ж(?=[шж][аоуие])/g, "з");
     string = string.replace(/шш(?![яюі])/g, "сш");
     string = string.replace(/чш/g, "тш");
     string = string.replace(/чч(?!ин|[яюі])/g, "тч");
     string = string.replace(/цці(?=\s|$)/g, "чці");
-    string = string.replace(/(?<=[уюї])сці(?=\s|$)/g, "шці");
-    string = string.replace(/(?<=[юї])зці(?=\s|$)/g, "жці");
+    string = string.replace(/(?<=[уюї])с(?=ц)/g, "ш");
+    string = string.replace(/(?<=[юїр])з(?=[цзс])/g, "ж");
     string = string.replace(/цц(?!і(\s|$))/g, "тц");
     string = string.replace(/цс/g, "тс");
     string = string.replace(/д[зж](?=[сцзшжчщ])/g, "д");
@@ -140,9 +144,12 @@ function p2g(string){
     string = string.replace(/дся(?=\s|$)/g, "дься");
     string = string.replace(/нся(?=\s|$)/g, "нься");
     string = string.replace(/ґ(?=[бдзжг])/g, "к");
-    string = string.replace(/((?<=ро)|(?<=бе)|(?<=чере))ж(?=дж|[жчшщ])/g, "з");
-    string = string.replace(/(?<=(^|\s)(і|не|по|напів|))ж(?=дж|[жчшщ])/g, "з");
+    string = string.replace(/((?<=ро)|(?<=бе)|(?<=чере))ж(?=дж|[чшщ])/g, "з");
+    string = string.replace(/(?<=(^|\s)(і|не|по|напів|))ж(?=дж|[чшщ])/g, "з");
     string = string.replace(/(?<=(^|\s)(і|не|по|напів|))[шс](?=[цсчшщ])/g, "з");
+    string = string.replace(/(?<=дво|рьо)г(?=[бдзжгкт])/g, "х");
+    string = string.replace(/(?<=я)д(?=де)/g, "т");
+    string = string.replace(/(?<=ші)[зс](?=[дснц])/g, "ст");
     return string;    
 }
 
