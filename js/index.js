@@ -48,8 +48,7 @@ function replace_phonemic(string){
     string = string.replace(/(?<=(во|[лд]е|кі|[дн]´[оі])́?)г(?=[кт])/g, "х");
 
     string = string.replace(/(?<=[дтнзсцлq])(?=[дтнзсцлq]´)/g, "´");
-    string = string.replace(/([бвгґжкпфхчшрмs])\1'/g, "$1'$1'");
-    string = string.replace(/рр´/g, "р´р´");
+    
     string = string.replace(/q/g, "д͡з");
     string = string.replace(/s/g, "д͡ж");
 return string;}
@@ -69,7 +68,20 @@ function replace_phonetic(string){
     string = string.replace(/((?<=[аеоу])|(?<=[аеоу]̃))(?=[дзлрстцнq]´|[jĭ]|[бвгжкмпфхчшґs]')/g, "·");
     string = string.replace(/(?<=[иіаеоу])́(?=[мн])/g, "̃́");
     string = string.replace(/((?<=[аеоу]́)|(?<=[аеоу]̃́))(?=[дзлрстцнq]´|[jĭ]|[бвгжкмпфхчшґs]')/g, "·");
-    string = string.replace(/([бвгґжкпфхчшдзлрстцмнqs][´']?)\1(['´]?°?)/g, "$1$2:");
+    string = string.replace(/([бвгґжкпфхчшдзлрстцмнqs]´?)\1(['´]?°?)/g, "$1$2:");
+    string = string.replace(/q/g, "д͡з");
+    string = string.replace(/s/g, "д͡ж");
+return string;}
+
+function replace_phonemic_to_ipa(string){
+    string = string.replace(/д͡з/g, "q");
+    string = string.replace(/д͡ж/g, "s");
+    string = string.replace(/в(?!['аоеуіив])/g, "ў");
+    string = string.replace(/(?<=[^́аеоуиі ])ў(?=\s|$)/g, "в");
+    string = string.replace(/ф(?=[бдзжгґqs])/g, "в");
+    string = string.replace(/(?<=[бвгжкмпфхчшґs])і/g, "'і");
+    string = string.replace(/([бвгґжкпфхчшрмs])\1'/g, "$1'$1'");
+    string = string.replace(/рр´/g, "р´р´");
     string = string.replace(/q/g, "д͡з");
     string = string.replace(/s/g, "д͡ж");
 return string;}
@@ -245,7 +257,8 @@ function checkform(type){
         }
     }
     if (type==2){
-        string2 = replace_phonemic(string);   
+        string2 = replace_phonemic(string);
+        string2 = replace_phonemic_to_ipa(string2);
         string2 = replace_ipa(string2);
         
     }
