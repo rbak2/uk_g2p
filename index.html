@@ -6,10 +6,12 @@
     <title>Автоматична транскрипція</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="container">
-      <h1>Автоматична транскрипція</h1>
-      <h2>Введіть український текст — отримайте транскрипцію</h2>
+  <body class="main-container">
+    <div class="main">
+      <h1 class="title">Автоматична транскрипція</h1>
+      <h2 class="subtitle">
+        Введіть український текст — отримайте транскрипцію
+      </h2>
       <form>
         <textarea
           rows="10"
@@ -18,38 +20,47 @@
           id="user_input"
           placeholder="Введіть текст"
           required
+          class="txtarea"
         ></textarea>
-        <div class="buttons">
-          <button onclick="return checkform(0)" type="button" class="first">
+        <div class="btn-container">
+          <button onclick="return checkform(0)" type="button" class="btn">
             Фонематична
           </button>
-          <button onclick="return checkform(1)" type="button" class="second">
+          <button onclick="return checkform(1)" type="button" class="btn">
             Фонетична
           </button>
-          <button onclick="return checkform(2)" type="button" class="third">
+          <button onclick="return checkform(2)" type="button" class="btn">
             IPA
           </button>
-          <button onclick="return checkform(3)" type="button" class="forth">
+          <button onclick="return checkform(3)" type="button" class="btn">
             P2G
           </button>
         </div>
         <p class="additional">Додаткові можливості (опціонально):</p>
         <div class="options">
-          <label
-            ><input type="checkbox" id="voiced" /> Асиміляція за глухістю</label
+          <label class="addtnl-label"
+            ><input type="checkbox" id="voiced" class="addtnl-input" />
+            Асиміляція за глухістю</label
           >
-          <label
-            ><input type="checkbox" id="syntagma" /> Поділ на синтагми</label
+          <label class="addtnl-label"
+            ><input type="checkbox" id="syntagma" class="addtnl-input" /> Поділ
+            на синтагми</label
           >
-          <label><input type="checkbox" id="stress" /> Наголос</label>
-          <label><input type="checkbox" id="word" /> Фонетичне слово</label>
+          <label class="addtnl-label"
+            ><input type="checkbox" id="stress" class="addtnl-input" />
+            Наголос</label
+          >
+          <label class="addtnl-label"
+            ><input type="checkbox" id="word" class="addtnl-input" /> Фонетичне
+            слово</label
+          >
         </div>
       </form>
       <div class="results">
         <span id="output"></span>
       </div>
     </div>
-    <footer>
+    <footer class="footer">
       <a class="help-link" href="about.html">Про сайт</a>
       <span
         >&copy; 2025. Фонетична та фонематична транскрипція українськомовних
