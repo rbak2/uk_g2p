@@ -56,8 +56,7 @@ return string;}
 function replace_phonetic(string){
     string = string.replace(/д͡з/g, "q");
     string = string.replace(/д͡ж/g, "s");
-    string = string.replace(/в(?!['аоеуіив])/g, "ў");
-    string = string.replace(/(?<=[^́аеоуиі ])ў(?=\s|$)/g, "в");
+    string = string.replace(/(?<![бвгґжкпфхчшдзлрстцмнqsj'´])в(?!['аоеуіив])/g, "ў");
     string = string.replace(/ф(?=[бдзжгґqs])/g, "в");
     string = string.replace(/j(?![аоеуіи])/g, "ĭ");
     string = string.replace(/(?<=[бвгжкмпфхчшґs])і/g, "'і");
@@ -65,9 +64,9 @@ function replace_phonetic(string){
     string = string.replace(/(?<=[j´'])(?=[аеоу])/g, "·");
     string = string.replace(/(?<=[бвгґжкпфхчшдзлрстцмнqsj'´])(?=·?[оу])/g, "°");
     string = string.replace(/(?<=[иіаеоу])(?=[мн])/g, "̃");
-    string = string.replace(/((?<=[аеоу])|(?<=[аеоу]̃))(?=[дзлрстцнq]´|[jĭ]|[бвгжкмпфхчшґs]')/g, "·");
+    string = string.replace(/((?<=[аеоу])|(?<=[аеоу]̃))(?=[дзлрстцнq]´|j|[бвгжкмпфхчшґs]')/g, "·");
     string = string.replace(/(?<=[иіаеоу])́(?=[мн])/g, "̃́");
-    string = string.replace(/((?<=[аеоу]́)|(?<=[аеоу]̃́))(?=[дзлрстцнq]´|[jĭ]|[бвгжкмпфхчшґs]')/g, "·");
+    string = string.replace(/((?<=[аеоу]́)|(?<=[аеоу]̃́))(?=[дзлрстцнq]´|j|[бвгжкмпфхчшґs]')/g, "·");
     string = string.replace(/([бвгґжкпфхчшдзлрстцмнqs]´?)\1(['´]?°?)/g, "$1$2:");
     string = string.replace(/q/g, "д͡з");
     string = string.replace(/s/g, "д͡ж");
@@ -76,8 +75,7 @@ return string;}
 function replace_phonemic_to_ipa(string){
     string = string.replace(/д͡з/g, "q");
     string = string.replace(/д͡ж/g, "s");
-    string = string.replace(/в(?!['аоеуіив])/g, "ў");
-    string = string.replace(/(?<=[^́аеоуиі ])ў(?=\s|$)/g, "в");
+    string = string.replace(/(?<![бвгґжкпфхчшдзлрстцмнqsj'´])в(?!['аоеуіив])/g, "ў");
     string = string.replace(/ф(?=[бдзжгґqs])/g, "в");
     string = string.replace(/(?<=[бвгжкмпфхчшґs])і/g, "'і");
     string = string.replace(/([бвгґжкпфхчшрмs])\1'/g, "$1'$1'");
@@ -96,7 +94,7 @@ function replace_stressed(string){
     string = string.replace(/u(?=[^аеоуиіnhuw ]+и̃?́)/g, "и");
     string = string.replace(/((?<=\s)|(?<=^))h/g, "е");
     string = string.replace(/((?<=\s)|(?<=^))u/g, "и");
-    string = string.replace(/о(?=[^аеоуиіnhu ]+[уі]̃?́)/g, "w");
+    string = string.replace(/о(?=[^аеоуиіnhu ]+[у]̃?́)/g, "w");
     string = string.replace(/h̃/g, "е̃(и)");
     string = string.replace(/ũ/g, "и̃(е)");
     string = string.replace(/ñ/g, "е̃(і)");
@@ -168,12 +166,27 @@ function p2g(string){
 }
 
 function p2g_dict(string){
+    
     string = string.replace("","")
     return string; }
 
+
 function phonetic_word(string){
-    string = string.replace("", "")
-    return string;    
+    let processed_string = ""
+    string = string.replace(/[^а-яієїА-ЯЄЇІҐґ́’'\+-\s]/g, "");
+    list1 = string.split(/\s/g);
+    for (let word of list1) {
+        let word_to_match = word.replace(/[а-яіїєґ’']/g, "");
+        if (word.slice(0,2).toUpperCase() == word.slice(0,2) && word_to_match.match(/(\s|^)[АЕОИУІЇЮЯЄ]?[БВГҐДЖЗПТЦЧЛМНРСФКХШЩЙ]{2,}[АЕОИУІЇЮЯЄ]?(\s|$)/g))
+        {
+            word = word.replace(/(?<=[БВГҐДЖЗПТЦЧ])/g, "е");
+            word = word.replace(/(?=[ЛМНРСФ])/g, "е");
+            word = word.replace(/(?<=[КХШЩ])/g, "а");
+            processed_string += word + " ";
+        }
+        else {processed_string += word + " ";}
+    }
+    return processed_string;    
 }
 function replace_ipa(string){
     string = string.replace(/д͡з/g, "ʣ");
@@ -242,10 +255,14 @@ function checkform(type){
     let voiced = document.getElementById("voiced")
     let syntagma = document.getElementById("syntagma")
 
-    string = string.toLowerCase()
-    if (word.checked==true && stress.checked==true){
+    
+
+    if (word.checked==true){
         string = phonetic_word(string)
     }
+
+    string = string.toLowerCase()
+
     let string2 = replace_phonemic(string);
     if (voiced.checked==true){
         string2 = replace_voiced(string2);
