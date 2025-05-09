@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ua">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Автоматична транскрипція</title>
+    <link rel="stylesheet" href="practice_styles.css" />
+  </head>
+  <body class="main-container">
+    <div class="main">
+      <h1 class="title">Аўт°о̃ма̃тична̃ тра̃нскрипц´іj·а</h1>
+      <h2 class="subtitle">
+        Введіть український текст — отримайте транскрипцію
+      </h2>
+      <form>
+        <textarea
+          rows="10"
+          cols="80"
+          type="text"
+          id="user_input"
+          placeholder="Введіть текст"
+          required
+          class="txtarea"
+        ></textarea>
+        <div class="btn-container">
+          <button onclick="return checkform(0)" type="button" class="btn">
+            Фонематична
+          </button>
+          <button onclick="return checkform(1)" type="button" class="btn">
+            Фонетична
+          </button>
+          <button onclick="return checkform(2)" type="button" class="btn">
+            IPA
+          </button>
+          <button onclick="return checkform(3)" type="button" class="btn">
+            P2G
+          </button>
+        </div>
+        <p class="additional">Додаткові можливості (опціонально):</p>
+        <div class="options">
+          <label class="addtnl-label"
+            ><input type="checkbox" id="voiced" class="addtnl-input" />
+            Асиміляція за глухістю (ненормативна)</label
+          >
+          <label class="addtnl-label"
+            ><input type="checkbox" id="syntagma" class="addtnl-input" /> Поділ
+            на синтагми</label
+          >
+          <label class="addtnl-label"
+            ><input type="checkbox" id="stress" class="addtnl-input" />
+            Наголос</label
+          >
+          <label class="addtnl-label"
+            ><input type="checkbox" id="word" class="addtnl-input" />
+            Абревіатури
+          </label>
+        </div>
+      </form>
+      <div class="results">
+        <span id="output"></span>
+      </div>
+    </div>
+    <footer class="footer">
+      <a class="help-link" href="index.html">Про сайт</a>
+      <span
+        >&copy; 2025. Фонетична та фонематична транскрипція українськомовних
+        текстів</span
+      >
+    </footer>
+    <script src="js/index.js"></script>
+  </body>
+</html>
