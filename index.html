@@ -9,14 +9,24 @@
   <body class="main-container">
     <div class="main">
       <h1 class="title">Аўт°о̃ма̃тична̃ тра̃нскрипц´іj·а</h1>
-      <p class="description">
-        Цей сайт є інструментарієм для
-        <span class="bold">автоматичного генерування транскрипції</span>
-        українськомовного тексту.
-        <br />Транскриптор розроблений у межах студентського проєкту <br />в
-        Київському національному університеті імені Тараса Шевченка.
-      </p>
-      <span class="hero-btn-bg"></span>
+      <div class="hero-row">
+        <p class="description">
+          Цей сайт є інструментарієм для
+          <br /><span class="bold">автоматичного генерування транскрипції</span>
+          українськомовного тексту.
+          <br />Транскриптор розроблений у межах студентського проєкту <br />в
+          Київському національному університеті імені Тараса Шевченка.
+        </p>
+        <button
+          type="button"
+          class="hero-button"
+          onclick="window.location.href='practice.html'"
+        >
+          <img src="right-arrow.svg" alt="" class="hero-button-arrow" />
+          <span class="hero-button-order">До транскриптора</span>
+          <span class="hero-button-bg"></span>
+        </button>
+      </div>
       <ul class="instr-box">
         <h2 class="instr-txt">Інструкція для користувача</h2>
         <li class="instruction">
@@ -55,10 +65,14 @@
           <span class="bold">транскрибований текст</span> у текстовому полі з
           результатами транскрипції.
         </li>
+        <button
+          onclick="window.location.href='practice.html'"
+          type="button"
+          class="try-btn"
+        >
+          Спр°об°увати
+        </button>
       </ul>
-      <button onclick="window.location.href='practice.html'" class="btn">
-        Спр°об°увати
-      </button>
     </div>
     <footer class="footer">
       <span
