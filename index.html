@@ -8,65 +8,63 @@
   </head>
   <body class="main-container">
     <div class="main">
-      <h1 class="title">Автоматична транскрипція</h1>
-      <h2 class="subtitle">
-        Введіть український текст — отримайте транскрипцію
-      </h2>
-      <form>
-        <textarea
-          rows="10"
-          cols="80"
-          type="text"
-          id="user_input"
-          placeholder="Введіть текст"
-          required
-          class="txtarea"
-        ></textarea>
-        <div class="btn-container">
-          <button onclick="return checkform(0)" type="button" class="btn">
-            Фонематична
-          </button>
-          <button onclick="return checkform(1)" type="button" class="btn">
-            Фонетична
-          </button>
-          <button onclick="return checkform(2)" type="button" class="btn">
-            IPA
-          </button>
-          <button onclick="return checkform(3)" type="button" class="btn">
-            P2G
-          </button>
-        </div>
-        <p class="additional">Додаткові можливості (опціонально):</p>
-        <div class="options">
-          <label class="addtnl-label"
-            ><input type="checkbox" id="voiced" class="addtnl-input" />
-            Асиміляція за глухістю (ненормативна)</label
-          >
-          <label class="addtnl-label"
-            ><input type="checkbox" id="syntagma" class="addtnl-input" /> Поділ
-            на синтагми</label
-          >
-          <label class="addtnl-label"
-            ><input type="checkbox" id="stress" class="addtnl-input" />
-            Наголос</label
-          >
-          <label class="addtnl-label"
-            ><input type="checkbox" id="word" class="addtnl-input" /> Абревіатури
-          </label
-          >
-        </div>
-      </form>
-      <div class="results">
-        <span id="output"></span>
-      </div>
+      <h1 class="title">Аўт°о̃ма̃тична̃ тра̃нскрипц´іj·а</h1>
+      <p class="description">
+        Цей сайт є інструментарієм для
+        <span class="bold">автоматичного генерування транскрипції</span>
+        українськомовного тексту.
+        <br />Транскриптор розроблений у межах студентського проєкту <br />в
+        Київському національному університеті імені Тараса Шевченка.
+      </p>
+      <span class="hero-btn-bg"></span>
+      <ul class="instr-box">
+        <h2 class="instr-txt">Інструкція для користувача</h2>
+        <li class="instruction">
+          <span class="number">1.</span> Введіть
+          <span class="bold">текст</span>, який хочете затранскрибувати, у
+          відповідне текстове поле.
+        </li>
+        <li class="instruction">
+          <span class="number">2.</span> За потреби оберіть прапорці додаткових
+          <span class="bold">функцій</span>: <br />- Прапорець "Асиміляція за
+          глухістю" відповідає за ненормативну асиміляцію за глухістю дзвінких
+          приголосних та сонорного [в] перед глухими або в кінці слова. <br />-
+          Прапорець "Поділ на синтагми" відповідає за поділ тексту на окремі
+          синтагми по розділових знаках. <br />- Прапорець "Наголос" не
+          відповідає за автоматичне наголошування. Він потрібен для визначення
+          наявності в тексті наголосу та реалізації відповідних перетворень.
+          Обов'язково переконайтеся перед його вибором, що усі слова мають
+          проставлений наголос. <br />- Прапорець "Абревіатури" відповідає за
+          обробку буквених абревіатур. Оберіть його, якщо такі абревіатури є у
+          вашому тексті. За замовчуванням виконуються правила усіх нормативних
+          фонетичних явищ, крім тих, що пов’язані з наголосом.
+        </li>
+        <li class="instruction">
+          <span class="number">3.</span> Оберіть
+          <span class="bold">тип</span> транскрипції, натиснувши на потрібну
+          кнопку: <br />- "Фонематична" для фонематичної транскрипції у символах
+          українського алфавіту. <br />- "Фонетична" для фонетичної транскрипції
+          у символах українського алфавіту. <br />- "IPA" для фонематичної
+          транскрипції у символах Міжнародного фонетичного алфавіту. <br />-
+          "P2G" для зворотної транскрипції з фонем до графем. Перед натисканням
+          переконайтесь, що введений фонетичний текст використовує символи
+          українського алфавіту.
+        </li>
+        <li class="instruction">
+          <span class="number">4.</span> Отримайте
+          <span class="bold">транскрибований текст</span> у текстовому полі з
+          результатами транскрипції.
+        </li>
+      </ul>
+      <button onclick="window.location.href='practice.html'" class="btn">
+        Спр°об°увати
+      </button>
     </div>
     <footer class="footer">
-      <a class="help-link" href="about.html">Про сайт</a>
       <span
         >&copy; 2025. Фонетична та фонематична транскрипція українськомовних
         текстів</span
       >
     </footer>
-    <script src="js/index.js"></script>
   </body>
 </html>
