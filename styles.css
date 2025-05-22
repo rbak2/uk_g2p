@@ -193,12 +193,13 @@
    flex-shrink: 0;
  }
 
- .help-link {
-   display: inline-block;
-   text-decoration: none;
-   color: #007bff;
-   font-size: 18px;
-   transition: color 0.2s ease;
+
+ /* ------------TABLET------------- */
+ @media screen and (min-width: 768px) and (max-width: 1158px) {
+    .hero-row {
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
       margin-bottom: 50px;
     }
     .title {
